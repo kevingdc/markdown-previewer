@@ -1,5 +1,8 @@
 import React from "react";
 
+import Container from "../components/Container";
+import Flex from "../components/Flex";
+import Heading from "../components/Heading";
 import Editor from "../components/Editor";
 import Preview from "../components/Preview";
 
@@ -62,10 +65,24 @@ And here. | Okay. | I think we get it.
 
   render() {
     return (
-      <div>
-        <Editor text={this.state.text} onChange={this.handleChange} />
-        <Preview text={this.state.text} />
-      </div>
+      <Container full fullVertical bgPrimary>
+        <Flex column contentCenter alignCenter>
+          <Container full small bgSecondary style={{ width: "100%" }}>
+            <Heading h3 center noMargin>
+              Markdown Previewer
+            </Heading>
+          </Container>
+          <Flex
+            justifyCenter
+            alignCenter
+            contentCenter
+            style={{ width: "90%" }}
+          >
+            <Editor text={this.state.text} onChange={this.handleChange} />
+            <Preview text={this.state.text} />
+          </Flex>
+        </Flex>
+      </Container>
     );
   }
 }
