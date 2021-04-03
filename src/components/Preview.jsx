@@ -5,6 +5,8 @@ import DOMPurify from "dompurify";
 
 import { theme, device } from "../styles/variables";
 
+marked.setOptions({ breaks: true });
+
 const StyledPreview = styled.div`
   border: 0;
   margin: 1.6rem 1rem 1.6rem 1rem;
@@ -24,7 +26,7 @@ const StyledPreview = styled.div`
 `;
 
 const Preview = props => {
-  const html = { __html: marked(DOMPurify.sanitize(props.text)) };
+  const html = { __html: DOMPurify.sanitize(marked(props.text)) };
   return <StyledPreview id="preview" dangerouslySetInnerHTML={html} />;
 };
 
